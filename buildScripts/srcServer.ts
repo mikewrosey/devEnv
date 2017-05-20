@@ -1,9 +1,17 @@
-import open from 'open';
-import express from 'express';
+const open = require('open');
+const express = require('express');
+const webpack = require('webpack');
+const config = require('../webpack.config');
 import * as path from 'path';
 
-let port = 3000;
-let app = express();
+const port = 3000;
+const app = express();
+const compiler = webpack(config);
+
+app.use(require('webpack-dev-middleware')(compiler, {
+	noInfo: true,
+	publicPath: config.output.publicPath
+}));
 
 app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, '../src/index.html'));
