@@ -5,7 +5,8 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "node buildScripts/srcServer.js",
-    "test": "test"
+    "test": "tsc -p ./ && mocha --reporter progress \"src/**/*.test.js\"",
+    "lint": "chokidar webpack.config.* src/**/*.ts buildScripts/**/*.ts -c \"tslint src/**/*.ts -t\" --initial"
   },
   "repository": {
     "type": "git",
@@ -18,13 +19,18 @@
   },
   "homepage": "https://github.com/mikewrosey/devEnv#readme",
   "devDependencies": {
+    "@types/mocha": "^2.2.41",
     "@types/node": "^7.0.12",
     "chai": "^3.5.0",
+    "chokidar-cli": "^1.2.0",
     "express": "^4.15.2",
+    "jsdom": "^10.1.0",
     "mocha": "^3.2.0",
     "open": "0.0.5",
+    "ts-loader": "^2.0.3",
     "tslint": "^5.2.0",
     "tslint-loader": "^3.5.3",
+    "typescript": "^2.3.2",
     "webpack": "^2.1.0-beta.21",
     "webpack-dev-middleware": "^1.10.2"
   }

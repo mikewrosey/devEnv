@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-import tslint from './tslint.json';
 
 module.exports = {
 	debug: true,
@@ -16,21 +15,29 @@ module.exports = {
 	},
 	module: {
 		rules: [
+			// {
+			// 	enforce: 'pre',
+			// 	test: /\.tsx?$/,
+			// 	loader: 'tslint-loader',
+			// 	options: {
+			// 		failOnHint: true,
+			// 		configuration: require('./tslint.json')
+			// 	},
+			// 	exclude: /node_modules/,
+			// },
 			{
-				enforce: 'pre',
 				test: /\.ts$/,
-				loader: 'tslint-loader',
-				options: require('./tslint.json'),
+				loader: 'ts-loader',
 				exclude: /node_modules/,
 			},
-			{
-				test: /\.scss$/,
-				fallbackLoader: "style-loader",
-				loader: 'css-loader!sass-loader'
-			}
+			// {
+			// 	test: /\.scss$/,
+			// 	fallbackLoader: "style-loader",
+			// 	loader: 'css-loader!sass-loader'
+			// }
 		]
 	},
 	resolve: {
 		extensions: [".tsx", ".ts", ".js"]
-	},
+	}
 };
