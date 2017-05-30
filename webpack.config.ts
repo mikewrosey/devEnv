@@ -13,6 +13,12 @@ module.exports = {
 		path: path.resolve(__dirname, 'src'),
 		publicPath: '/',
 	},
+	plugins: [
+		// Eliminate duplicate packages
+	//	new webpack.optimize.DedupePlugin(),
+		// Minify JS
+	//	new webpack.optimize.UglifyJsPlugin()
+	],
 	module: {
 		rules: [
 			// {
